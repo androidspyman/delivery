@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SuperDelivery - Ντελιβερι Σουπερμάρκετ σε Χωριά</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #4CAF50;
+            --primary-dark: #388E3C;
+            --secondary: #FFC107;
+            --light: #F8F9FA;
+            --dark: #333;
+            --gray: #6c757d;
+            --success: #28a745;
+            --border-radius: 8px;
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Roboto', sans-serif;
+        }
+        
+        body {
+            background-color: #f8f9fa;
+            color: var(--dark);
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .header {
+            background-color: var(--primary);
+            color: white;
+            padding: 1rem;
+            text-align: center;
+            box-shadow: var(--shadow);
+        }
+        
+        .logo {
+            font-size: 2rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+        
+        .tagline {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            margin-top: 5px;
+        }
+        
+        .container {
+            display: flex;
+            flex: 1;
+            flex-wrap: wrap;
+        }
+        
+        .hero-image {
+            flex: 1;
+            min-width: 300px;
+            background: linear-gradient(rgba(76, 175, 80, 0.7), rgba(76, 175, 80, 0.7)), 
+                        url('https://images.unsplash.com/photo-1579113800032-c38bd7635818?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80') center/cover;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            color: white;
+            text-align: center;
+            position: relative;
+        }
+        
+        .hero-content {
+            max-width: 600px;
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 30px;
+            border-radius: var(--border-radius);
+            backdrop-filter: blur(5px);
+        }
+        
+        .hero-image h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+        }
+        
+        .hero-image p {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+        }
+        
+        .benefits {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        
+        .benefit-item {
+            background-color: rgba(255, 255, 255, 0.2);
+            padding: 10px 15px;
+            border-radius: 50px;
+            font-size: 0.9rem;
+        }
+        
+        .form-section {
+            flex: 1;
+            min-width: 300px;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            background-color: white;
+        }
+        
+        .form-container {
+            max-width: 500px;
+            margin: 0 auto;
+            width: 100%;
+        }
+        
+        h2 {
+            color: var(--primary);
+            margin-bottom: 30px;
+            font-size: 2rem;
+            text-align: center;
+            position: relative;
+            padding-bottom: 15px;
+        }
+        
+        h2:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: var(--primary);
+            border-radius: 2px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: var(--dark);
+        }
+        
+        .required:after {
+            content: " *";
+            color: #e32;
+        }
+        
+        input, textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: var(--border-radius);
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+        
+        input:focus, textarea:focus {
+            border-color: var(--primary);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.2);
+        }
+        
+        button {
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            padding: 15px 20px;
+            font-size: 1.1rem;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            width: 100%;
+            font-weight: 600;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+        
+        button:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-2px);
+        }
+        
+        .success-message {
+            display: none;
+            background-color: #d4edda;
+            color: #155724;
+            padding: 15px;
+            border-radius: var(--border-radius);
+            margin-top: 20px;
+            text-align: center;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        .error-message {
+            display: none;
+            background-color: #f8d7da;
+            color: #721c24;
+            padding: 15px;
+            border-radius: var(--border-radius);
+            margin-top: 20px;
+            text-align: center;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        .footer {
+            background-color: var(--dark);
+            color: white;
+            text-align: center;
+            padding: 20px;
+            font-size: 0.9rem;
+        }
+        
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 10px;
+            flex-wrap: wrap;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+            }
+            
+            .hero-image, .form-section {
+                min-height: 50vh;
+            }
+            
+            .hero-content {
+                padding: 20px;
+            }
+            
+            .form-section {
+                padding: 30px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="logo">
+            <span>SuperDelivery</span>
+        </div>
+        <div class="tagline">Φέρνουμε το σουπερμάρκετ στο χωριό σας!</div>
+    </header>
+    
+    <div class="container">
+        <div class="hero-image">
+            <div class="hero-content">
+                <h1>Ντελιβερι Σουπερμάρκετ σε Χωριά</h1>
+                <p>Χωρίς να βγείτε από το σπίτι σας, σας φέρνουμε τα πάντα από το σούπερ μάρκετ απευθείας στην πόρτα σας!</p>
+                
+                <div class="benefits">
+                    <div class="benefit-item">Γρήγορη παράδοση</div>
+                    <div class="benefit-item">Φρέσκα προϊόντα</div>
+                    <div class="benefit-item">Εύκολη πληρωμή</div>
+                    <div class="benefit-item">Φιλικές τιμές</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="form-section">
+            <div class="form-container">
+                <h2>Εγγραφή για υπηρεσία</h2>
+                <form id="registrationForm">
+                    <div class="form-group">
+                        <label for="firstName" class="required">Όνομα:</label>
+                        <input type="text" id="firstName" name="firstName" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="lastName" class="required">Επώνυμο:</label>
+                        <input type="text" id="lastName" name="lastName" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="landline">Σταθερό Τηλέφωνο:</label>
+                        <input type="tel" id="landline" name="landline">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="mobile" class="required">Κινητό Τηλέφωνο:</label>
+                        <input type="tel" id="mobile" name="mobile" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email" class="required">Email:</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="address" class="required">Πλήρης Διεύθυνση:</label>
+                        <textarea id="address" name="address" rows="3" placeholder="Οδός, Αριθμός, Χωριό, ΤΚ" required></textarea>
+                    </div>
+                    
+                    <button type="submit" id="submitButton">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
+                            <path d="M15.964.686a.5.5 0 0 0-.65-.65L.767 5.855H.766l-.452.18a.5.5 0 0 0-.082.887l.41.26.001.002 4.995 3.178 3.178 4.995.002.002.26.41a.5.5 0 0 0 .886-.083l6-15Zm-1.833 1.89L6.637 10.07l-.215-.338a.5.5 0 0 0-.154-.154l-.338-.215 7.494-7.494 1.178-.471-.47 1.178Z"/>
+                        </svg>
+                        Αποστολή Εγγραφής
+                    </button>
+                </form>
+                <div class="success-message" id="successMessage">
+                    Ευχαριστούμε για την εγγραφή σας! Θα επικοινωνήσουμε σύντομα μαζί σας για επιβεβαίωση.
+                </div>
+                <div class="error-message" id="errorMessage">
+                    Υπήρξε ένα πρόβλημα κατά την υποβολή. Παρακαλώ δοκιμάστε ξανά.
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <footer class="footer">
+        <div>© 2023 SuperDelivery - Υπηρεσία Ντελιβερι Σουπερμάρκετ σε Χωριά</div>
+        <div class="contact-info">
+            <div class="contact-item">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                    <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4Zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1H2Zm13 2.383-4.708 2.825L15 11.105V5.383Zm-.034 6.876-5.64-3.471L8 9.583l-1.326-.795-5.64 3.47A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.741ZM1 11.105l4.708-2.897L1 5.383v5.722Z"/>
+                </svg>
+                <span>info@superdelivery.gr</span>
+            </div>
+            <div class="contact-item">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                    <path d="M3.654 1.328a.678.678 0 0 0-1.015-.063L1.605 2.3c-.483.484-.661 1.169-.45 1.77a17.568 17.568 0 0 0 4.168 6.608 17.569 17.569 0 0 0 6.608 4.168c.601.211 1.286.033 1.77-.45l1.034-1.034a.678.678 0 0 0-.063-1.015l-2.307-1.794a.678.678 0 0 0-.58-.122l-2.19.547a1.745 1.745 0 0 1-1.657-.459L5.482 8.062a1.745 1.745 0 0 1-.46-1.657l.548-2.19a.678.678 0 0 0-.122-.58L3.654 1.328zM1.884.511a1.745 1.745 0 0 1 2.612.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.678.678 0 0 0 .178.643l2.457 2.457a.678.678 0 0 0 .644.178l2.189-.547a1.745 1.745 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.634 18.634 0 0 1-7.01-4.42 18.634 18.634 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877L1.885.511z"/>
+                </svg>
+                <span>210 123 4567</span>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById('registrationForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const submitButton = document.getElementById('submitButton');
+            const successMessage = document.getElementById('successMessage');
+            const errorMessage = document.getElementById('errorMessage');
+            
+            // Απόκρυψη προηγούμενων μηνυμάτων
+            successMessage.style.display = 'none';
+            errorMessage.style.display = 'none';
+            
+            // Αλλαγή κειμένου κουμπιού κατά την αποστολή
+            const originalButtonText = submitButton.innerHTML;
+            submitButton.innerHTML = 'Αποστολή...';
+            submitButton.disabled = true;
+            
+            // Δημιουργία FormData από τη φόρμα
+            const formData = new FormData(this);
+            
+            // Αποστολή δεδομένων στο Formspree
+            fetch('https://formspree.io/f/mvgqvyao', {
+                method: 'POST',
+                body: formData,
+                headers: {
+                    'Accept': 'application/json'
+                }
+            })
+            .then(response => {
+                if (response.ok) {
+                    // Εμφάνιση μηνύματος επιτυχίας
+                    successMessage.style.display = 'block';
+                    
+                    // Καθαρισμός φόρμας
+                    this.reset();
+                    
+                    // Απόκρυψη μηνύματος μετά από 5 δευτερόλεπτα
+                    setTimeout(() => {
+                        successMessage.style.display = 'none';
+                    }, 5000);
+                } else {
+                    // Εμφάνιση μηνύματος σφάλματος
+                    errorMessage.style.display = 'block';
+                    throw new Error('Network response was not ok.');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                errorMessage.style.display = 'block';
+            })
+            .finally(() => {
+                // Επαναφορά κουμπιού στην αρχική του κατάσταση
+                submitButton.innerHTML = originalButtonText;
+                submitButton.disabled = false;
+            });
+        });
+    </script>
+</body>
+</html>
